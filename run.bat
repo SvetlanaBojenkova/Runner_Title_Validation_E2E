@@ -34,10 +34,11 @@ CD C:\%WS_DIR%
 git clone https://github.com/%GITHUB_ACCOUNT%/%REPO_NAME%.git
 CD %REPO_NAME%
 SLEEP 6
-CALL mvn package
+:CALL mvn install
+CALL mvn clean site test -Dtest=AllTest -Dbuild.version="1.1"
 ECHO.
-ECHO Executing Java programm ...
-java -jar C:\%WS_DIR%\%REPO_NAME%\target\Title_Validation_E2E-1.1-jar-with-dependencies.jar 
+:ECHO Executing Java programm ...
+:java -jar C:\%WS_DIR%\%REPO_NAME%\target\Title_Validation_E2E-1.1-jar-with-dependencies.jar 
 GOTO END
 
 :EXIT_JAVA
